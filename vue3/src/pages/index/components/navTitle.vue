@@ -41,9 +41,9 @@ export default {
 
 <style lang="scss">
 .nav-title{
-  &-container{
+  // &-container{
 
-  }
+  // }
   &-item{
     width: 100%;
     height: 76px;

@@ -26,12 +26,14 @@ module.exports = {
   // 自定义webpack配置
   configureWebpack: {
     resolve: {
+      extensions: ['.vue', '.ts', '.js'],
       alias: {
         '@': resolve('src'),
       },
     },
     output: {
       // 把子应用打包成 umd 库格式
+      // libraryExport: 'default',
       filename: 'vue3.js',
       library: `${packageName}`,
       libraryTarget: 'umd',
@@ -42,10 +44,10 @@ module.exports = {
         // {test: /\.css$/, use:['vue-style-loader','css-loader']},//配置处理.css文件的第三方处理规则
         // // {test: /\.less$/, use: ["vue-style-loader",'css-loader','less-loader']},
         // {test: /\.scss$/, use: ["vue-style-loader ",'css-loader','sass-loader']},
-        // {test:/\.js$/, use:'babel-loader', exclude: file => (
-        //   /node_modules/.test(file) &&
-        //   !/\.vue\.js/.test(file)
-        // )},
+        {test:/\.js$/, use:'babel-loader', exclude: file => (
+          /node_modules/.test(file) &&
+          !/\.vue\.js/.test(file)
+        )},
         {test: /\.vue$/, use: 'vue-loader'}
       ]
     },
